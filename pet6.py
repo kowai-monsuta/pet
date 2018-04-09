@@ -68,11 +68,22 @@ class Pet:
         other.is_alive = False
         other.is_revived = True
 
+    def revengekill(other, self):
+        print(other.name + " kills " + self.name +"!")
+        print(self.name + " got what they deserve and is now dead.")
+        self.is_alive = False
+        self.is_revived = False
+
     def hug(self, other):
-        print(self.name + " hugs " + other.name +"!")
-        other.happiness += 1
-        print(other.name + " says, 'I'm like " + str(other.happiness) + " happy now.")        
-        
+        if self.is_alive:
+            print(self.name + " hugs " + other.name +"!")
+            other.happiness += 1
+            print(other.name + " says, 'I'm like " + str(other.happiness) + " happy now.")        
+        elif self.is_revived:
+            print(self.name + " says 'I'm dead inside.'")
+        else:
+            print("I can't move.")
+            
     def __repr__(self):
         return "Name: " + self.name + \
                " [x=" + str(self.x) + \
